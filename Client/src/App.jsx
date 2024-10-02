@@ -1,3 +1,4 @@
+import './index.css'
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -11,8 +12,8 @@ function App() {
 
   return (
     <>
-      <h1>React frontend</h1>
-      <div>
+      <h1 className='text-green-200'>React frontend</h1>
+      <div className='bg-red-800'>
         {data ? <h1>{data.message}</h1> : <p>Loading..</p>}
       </div>
     </>
