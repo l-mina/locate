@@ -1,21 +1,23 @@
 import './index.css'
 import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import Navbar from './Components/Nav'
+import Home from './Pages/Home'
+import About from './Pages/About'
+import Contact from './Pages/Contact'
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(()=>{
-    fetch('/api')
-      .then(res => res.json())
-      .then(data => setData(data))
-  },[]);
 
   return (
     <>
-      <h1 className='text-green-200'>React frontend</h1>
-      <div className='bg-red-800'>
-        {data ? <h1>{data.message}</h1> : <p>Loading..</p>}
-      </div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
